@@ -1,0 +1,27 @@
+﻿@model AccordionExample.Models.Salary
+@using (Html.BeginForm("SubmitForms", "EmployeeSalary", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <!-- Salary form fields -->
+    <div class="accordion" id="salaryAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="salaryHeading">
+                <button class="accordion-button" type="button" data-toggle="collapse" data-target="#salaryCollapse" aria-expanded="true" aria-controls="salaryCollapse">
+                    Salary Details
+                </button>
+            </h2>
+            <div id="salaryCollapse" class="accordion-collapse collapse in" aria-labelledby="salaryHeading">
+                <div class="accordion-body">
+                    @Html.LabelFor(model => model.Salary1)
+                    @Html.TextBoxFor(model => model.Salary1, new { @class = "form-control" })
+
+                    @Html.LabelFor(model => model.EmpID)
+                    @Html.TextBoxFor(model => model.EmpID, new { @class = "form-control" })
+
+                    <button type="submit" class="btn btn-primary">Submit Salary Form</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}

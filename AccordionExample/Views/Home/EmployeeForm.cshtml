@@ -1,0 +1,37 @@
+﻿@model AccordionExample.Models.Emp
+
+
+@using (Html.BeginForm("SubmitForms", "EmployeeSalary", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <!-- Employee form fields -->
+    <div class="accordion" id="employeeAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="employeeHeading">
+                <button class="accordion-button" type="button" data-toggle="collapse" data-target="#employeeCollapse" aria-expanded="true" aria-controls="employeeCollapse">
+                    Employee Details
+                </button>
+            </h2>
+            <div id="employeeCollapse" class="accordion-collapse collapse in" aria-labelledby="employeeHeading">
+                <div class="accordion-body">
+                    @Html.LabelFor(model => model.EmpName)
+                    @Html.TextBoxFor(model => model.EmpName, new { @class = "form-control" })
+
+                    @Html.LabelFor(model => model.Designation)
+                    @Html.TextBoxFor(model => model.Designation, new { @class = "form-control" })
+
+                    <button type="submit" class="btn btn-primary">Submit Employee Form</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
